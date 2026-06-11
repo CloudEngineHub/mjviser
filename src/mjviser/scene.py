@@ -38,7 +38,6 @@ class _MeshGroup:
 _DEFAULT_FOV_DEGREES = 60
 _DEFAULT_FOV_MIN = 20
 _DEFAULT_FOV_MAX = 150
-_DEFAULT_ENVIRONMENT_INTENSITY = 0.8
 _DEFAULT_CONTACT_POINT_COLOR = (230, 153, 51)
 _DEFAULT_CONTACT_FORCE_COLOR = (255, 0, 0)
 
@@ -195,9 +194,6 @@ class ViserMujocoScene:
     self._scene_offset = np.zeros(3)
 
     # Build the scene.
-    server.scene.configure_environment_map(
-      environment_intensity=_DEFAULT_ENVIRONMENT_INTENSITY
-    )
     self.fixed_bodies_frame = server.scene.add_frame("/fixed_bodies", show_axes=False)
     # Populate xpos/xquat so fixed body geometry is placed in world space.
     mujoco.mj_kinematics(mj_model, self.mj_data)
